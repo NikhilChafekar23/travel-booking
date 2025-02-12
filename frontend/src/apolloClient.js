@@ -1,7 +1,11 @@
-import { ApolloClient, InMemoryCache } from "@apollo/client";
+import { ApolloClient, InMemoryCache, HttpLink } from '@apollo/client';
 
+// Apollo Client setup with GraphQL endpoint
 const client = new ApolloClient({
-  uri: import.meta.env.VITE_API_URL,  // URL of your backend server
+  link: new HttpLink({
+    uri: 'https://travel-booking-h0t6.onrender.com/graphql',  // GraphQL API endpoint
+    credentials: 'same-origin',  // Use 'include' if your backend needs credentials
+  }),
   cache: new InMemoryCache(),
 });
 
